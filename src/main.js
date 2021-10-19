@@ -9,6 +9,7 @@ import {createFilmCardTemplate} from './components/film-card.js';
 import {createShowMoreButtonTemplate} from './components/show-more-button.js';
 import {createFilmPopupTemplate} from './components/film-popup.js';
 import {generateNav, generateNavAdditional} from "./mock/nav";
+import {sorts} from "./mock/sort";
 
 
 const render = (container, template, place = 'beforeend') => {
@@ -24,7 +25,7 @@ const navAdditional = generateNavAdditional();
 
 render(siteHeaderElement, createProfileTemplate());
 render(siteMainElement, createNavTemplate(nav, navAdditional));
-render(siteMainElement, createSortTemplate());
+render(siteMainElement, createSortTemplate(sorts));
 render(siteMainElement, createFilmsContainerTemplate());
 
 const filmsContainerElement = siteMainElement.querySelector('.films');
