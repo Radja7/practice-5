@@ -1,11 +1,27 @@
-export const createNavTemplate = () => (
-  `<nav class="main-navigation">
+const createNavMarkup = (nav, isActive) => {
+  const {text, name, count} = nav;
+  return (
+    `<a href="#${name}" class="main-navigation__item ${isActive ? 'main-navigation__item--active' : ''}">${!!text ? text : name} ${!!count ? 
+      `<span class="main-navigation__item-count">${count}</span>` 
+      : ''} </a>`
+  );
+};
+
+const createAdditionalMarkup = (name, isActive) => {
+  return (
+    `<a href="#${name}" class="main-navigation__additional ${isActive ? 'main-navigation__additional--active' : ''}">${name}</a>`
+  );
+};
+
+export const createNavTemplate = (nav, navAdditional) => {
+  const navMarkup = nav.map((it, i) =>
+    createNavMarkup(it, i === 0)).join('\n');
+  const navAdditionalMarkup = createAdditionalMarkup(navAdditional[0].name, false);
+
+  return `<nav class="main-navigation">
       <div class="main-navigation__items">
-        <a href="#all" class="main-navigation__item main-navigation__item--active">All movies</a>
-        <a href="#watchlist" class="main-navigation__item">Watchlist <span class="main-navigation__item-count">13</span></a>
-        <a href="#history" class="main-navigation__item">History <span class="main-navigation__item-count">4</span></a>
-        <a href="#favorites" class="main-navigation__item">Favorites <span class="main-navigation__item-count">8</span></a>
+        ${navMarkup}
       </div>
-      <a href="#stats" class="main-navigation__additional">Stats</a>
+     ${navAdditionalMarkup}
     </nav>`
-);
+};

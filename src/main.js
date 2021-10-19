@@ -8,6 +8,7 @@ import {createFilmsContainerTemplate} from './components/films-container.js';
 import {createFilmCardTemplate} from './components/film-card.js';
 import {createShowMoreButtonTemplate} from './components/show-more-button.js';
 import {createFilmPopupTemplate} from './components/film-popup.js';
+import {generateNav, generateNavAdditional} from "./mock/nav";
 
 
 const render = (container, template, place = 'beforeend') => {
@@ -18,8 +19,11 @@ const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
 const siteFooterElement = document.querySelector('.footer');
 
+const nav = generateNav();
+const navAdditional = generateNavAdditional();
+
 render(siteHeaderElement, createProfileTemplate());
-render(siteMainElement, createNavTemplate());
+render(siteMainElement, createNavTemplate(nav, navAdditional));
 render(siteMainElement, createSortTemplate());
 render(siteMainElement, createFilmsContainerTemplate());
 
@@ -39,5 +43,5 @@ for (let i = 0; i < filmsExtraListElements.length; i++) {
   }
 }
 
-render(siteFooterElement, createFilmPopupTemplate(), 'afterEnd');
+//render(siteFooterElement, createFilmPopupTemplate(), 'afterEnd');
 
