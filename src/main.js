@@ -8,7 +8,10 @@ import {createFilmPopupTemplate} from './components/film-popup.js';
 import {generateNav, generateNavAdditional} from "./mock/nav";
 import {generateFilmCards} from "./mock/film-card";
 
-const FILMS_COUNT = 5;
+const FILMS_COUNT = 20;
+const SHOWING_FILMS_COUNT_ON_START = 5;
+const SHOWING_FILMS_COUNT_BY_BUTTON = 5;
+
 const EXTRA_FILMS_COUNT = 2;
 
 
@@ -33,11 +36,27 @@ const filmsContainerElement = siteMainElement.querySelector('.films');
 const filmsListElement = filmsContainerElement.querySelector('.films-list__container');
 const filmsExtraListElements = filmsContainerElement.querySelectorAll('.films-list--extra');
 
-for (let i = 0; i < FILMS_COUNT; i++) {
+let showingFilmsCount = SHOWING_FILMS_COUNT_ON_START;
+
+for (let i = 0; i < showingFilmsCount; i++) {
   render(filmsListElement, createFilmCardTemplate(filmCards[i]));
 }
 
 render(filmsListElement, createShowMoreButtonTemplate(), 'afterEnd');
+
+const loadMoreButton = filmsContainerElement.querySelector('.films-list__show-more');
+
+loadMoreButton.addEventListener('click', () => {
+  const prevFilmsCount = showingFilmsCount;
+  showingFilmsCount = showingFilmsCount + SHOWING_FILMS_COUNT_BY_BUTTON;
+
+  filmCards.slice(prevFilmsCount, showingFilmsCount)
+    .forEach((film) => render(filmsListElement, createFilmCardTemplate(film)));
+
+  if(showingFilmsCount >= filmCards.length) {
+    loadMoreButton.remove();
+  }
+});
 
 const extraFilmCards = generateFilmCards(filmsExtraListElements.length * EXTRA_FILMS_COUNT);
 let extraFilmCardsCount = 0;
@@ -45,7 +64,6 @@ let extraFilmCardsCount = 0;
 for (let i = 0; i < filmsExtraListElements.length; i++) {
   for (let k = 0; k < EXTRA_FILMS_COUNT; k++) {
     const filmsExtraListInnerContainerElement = filmsExtraListElements[i].querySelector('.films-list__container');
-    console.log(extraFilmCardsCount);
     render(filmsExtraListInnerContainerElement, createFilmCardTemplate(filmCards[extraFilmCardsCount]));
     extraFilmCardsCount++;
   }
