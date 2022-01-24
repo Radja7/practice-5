@@ -5,8 +5,8 @@ import {createFilmsContainerTemplate} from './components/films-container.js';
 import {createFilmCardTemplate} from './components/film-card.js';
 import {createShowMoreButtonTemplate} from './components/show-more-button.js';
 import {createFilmPopupTemplate} from './components/film-popup.js';
-import {generateNav, generateNavAdditional} from "./mock/nav";
-import {generateFilmCards} from "./mock/film-card";
+import {generateNav, generateNavAdditional} from './mock/nav';
+import {generateFilmCards} from './mock/film-card';
 
 const FILMS_COUNT = 20;
 const SHOWING_FILMS_COUNT_ON_START = 5;
@@ -69,5 +69,5 @@ for (let i = 0; i < filmsExtraListElements.length; i++) {
   }
 }
 
-//render(siteFooterElement, createFilmPopupTemplate(), 'afterEnd');
+render(siteFooterElement, createFilmPopupTemplate(filmCards[0]), 'afterEnd');
 
