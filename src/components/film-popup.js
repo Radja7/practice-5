@@ -3,7 +3,7 @@ import { convertDatePopup } from '../utils/task.js';
 export const createFilmPopupTemplate = (filmCard) => {
   const {ageRating, originalName,director,writers,actors,country,releaseDate,  posterURL, name, rating, duration, genre, description, isWatchlist, isWatched, isFavorite} = filmCard;
 
-  const activeClass = 'film-card__controls-item--active';
+  const activeClass = 'film-details__control-button--active';
   const watchlistControlActiveClass = isWatchlist ? activeClass : '';
   const watchedControlActiveClass = isWatched ? activeClass : '';
   const favoriteControlActiveClass = isFavorite ? activeClass : '';
