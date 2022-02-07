@@ -1,6 +1,7 @@
 import { trimText } from '../utils/common.js';
+import { createElement } from '../utils/render.js';
 
-export const createFilmCardTemplate = (filmCard) => {
+const createFilmCardTemplate = (filmCard) => {
   const {posterURL, name, rating, year, duration, genre, description, commentsCount, isWatchlist, isWatched, isFavorite} = filmCard;
 
   const activeClass = 'film-card__controls-item--active';
@@ -26,3 +27,28 @@ export const createFilmCardTemplate = (filmCard) => {
           </div>
     </article> `
 };
+
+export default class FilmCardComponent  {
+
+  constructor(filmCard) {
+    this._filmCard = filmCard;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmCardTemplate(this._filmCard);
+  }
+
+  getElement() {
+    if(!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+
+}

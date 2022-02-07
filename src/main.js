@@ -15,7 +15,7 @@ const SHOWING_FILMS_COUNT_BY_BUTTON = 5;
 const EXTRA_FILMS_COUNT = 2;
 
 
-const render = (container, template, place = 'beforeend') => {
+const renderOLD = (container, template, place = 'beforeend') => {
   container.insertAdjacentHTML(place, template);
 };
 
@@ -27,10 +27,10 @@ const nav = generateNav();
 const navAdditional = generateNavAdditional();
 const filmCards = generateFilmCards(FILMS_COUNT);
 
-render(siteHeaderElement, createProfileTemplate());
-render(siteMainElement, createNavTemplate(nav, navAdditional));
-render(siteMainElement, createSortTemplate());
-render(siteMainElement, createFilmsContainerTemplate());
+renderOLD(siteHeaderElement, createProfileTemplate());
+renderOLD(siteMainElement, createNavTemplate(nav, navAdditional));
+renderOLD(siteMainElement, createSortTemplate());
+renderOLD(siteMainElement, createFilmsContainerTemplate());
 
 const filmsContainerElement = siteMainElement.querySelector('.films');
 const filmsListElement = filmsContainerElement.querySelector('.films-list__container');
@@ -39,10 +39,10 @@ const filmsExtraListElements = filmsContainerElement.querySelectorAll('.films-li
 let showingFilmsCount = SHOWING_FILMS_COUNT_ON_START;
 
 for (let i = 0; i < showingFilmsCount; i++) {
-  render(filmsListElement, createFilmCardTemplate(filmCards[i]));
+  renderOLD(filmsListElement, createFilmCardTemplate(filmCards[i]));
 }
 
-render(filmsListElement, createShowMoreButtonTemplate(), 'afterEnd');
+renderOLD(filmsListElement, createShowMoreButtonTemplate(), 'afterEnd');
 
 const loadMoreButton = filmsContainerElement.querySelector('.films-list__show-more');
 
@@ -51,7 +51,7 @@ loadMoreButton.addEventListener('click', () => {
   showingFilmsCount = showingFilmsCount + SHOWING_FILMS_COUNT_BY_BUTTON;
 
   filmCards.slice(prevFilmsCount, showingFilmsCount)
-    .forEach((film) => render(filmsListElement, createFilmCardTemplate(film)));
+    .forEach((film) => renderOLD(filmsListElement, createFilmCardTemplate(film)));
 
   if(showingFilmsCount >= filmCards.length) {
     loadMoreButton.remove();
@@ -64,10 +64,10 @@ let extraFilmCardsCount = 0;
 for (let i = 0; i < filmsExtraListElements.length; i++) {
   for (let k = 0; k < EXTRA_FILMS_COUNT; k++) {
     const filmsExtraListInnerContainerElement = filmsExtraListElements[i].querySelector('.films-list__container');
-    render(filmsExtraListInnerContainerElement, createFilmCardTemplate(filmCards[extraFilmCardsCount]));
+    renderOLD(filmsExtraListInnerContainerElement, createFilmCardTemplate(filmCards[extraFilmCardsCount]));
     extraFilmCardsCount++;
   }
 }
 
-render(siteFooterElement, createFilmPopupTemplate(filmCards[0]), 'afterEnd');
+//render(siteFooterElement, createFilmPopupTemplate(filmCards[0]), 'afterEnd');
 

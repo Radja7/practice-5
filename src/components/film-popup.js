@@ -1,6 +1,7 @@
 import { convertDatePopup } from '../utils/task.js';
+import { createElement } from '../utils/render.js';
 
-export const createFilmPopupTemplate = (filmCard) => {
+const createFilmPopupTemplate = (filmCard) => {
   const {ageRating, originalName,director,writers,actors,country,releaseDate,  posterURL, name, rating, duration, genre, description, isWatchlist, isWatched, isFavorite} = filmCard;
 
   const activeClass = 'film-details__control-button--active';
@@ -64,7 +65,8 @@ export const createFilmPopupTemplate = (filmCard) => {
                     <td class="film-details__cell">
                       <span class="film-details__genre">${genre[0]}</span>
                       <span class="film-details__genre">${genre[1]}</span>
-                      <span class="film-details__genre">${genre[2]}</span></td>
+                      <span class="film-details__genre">${genre[2]}</span>
+                    </td>
                   </tr>
                 </table>
       
@@ -172,3 +174,26 @@ export const createFilmPopupTemplate = (filmCard) => {
         </form>
       </section> `
 };
+
+export default class FilmPopupComponent {
+  constructor(filmCard) {
+    this._filmCard = filmCard;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmPopupTemplate(this._filmCard)
+  }
+
+  getElement() {
+    if(!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

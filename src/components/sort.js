@@ -1,4 +1,5 @@
 import {SORTS} from '../const';
+import { createElement } from '../utils/render.js';
 
 const createSortMarkup = (name, isActive) => {
   return (
@@ -6,9 +7,31 @@ const createSortMarkup = (name, isActive) => {
   );
 };
 
-export const createSortTemplate = () => {
+const createSortTemplate = () => {
   const sortMarkup = SORTS.map((it, i) => createSortMarkup(it, i === 0)).join('\n');
   return `<ul class="sort">
       ${sortMarkup}
     </ul>`
 };
+
+export default class SortComponent {
+  constructor() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createSortTemplate();
+  }
+
+  getElement() {
+    if(!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
