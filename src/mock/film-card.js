@@ -142,7 +142,7 @@ const generateFilmCard = () => {
   };
 };
 
-console.log(generateFilmCard());
+//console.log(generateFilmCard());
 
 const generateFilmCards = (count) => {
   return new Array(count)

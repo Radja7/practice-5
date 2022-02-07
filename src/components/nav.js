@@ -29,7 +29,7 @@ const createNavTemplate = (nav, navAdditional) => {
 };
 
 export default class NavComponent {
-  constructor() {
+  constructor(nav, navAdditional) {
     this._nav = nav;
     this._navAdditional = navAdditional;
     this._element = null;
