@@ -1,10 +1,10 @@
-import {createProfileTemplate} from './components/profile.js';
-import {createNavTemplate} from './components/nav.js';
-import {createSortTemplate} from './components/sort.js';
-import {createFilmsContainerTemplate} from './components/films-container.js';
-import {createFilmCardTemplate} from './components/film-card.js';
-import {createShowMoreButtonTemplate} from './components/show-more-button.js';
-import {createFilmPopupTemplate} from './components/film-popup.js';
+import ProfileComponent from './components/profile.js';
+import NavComponent from './components/nav.js';
+import SortComponent from './components/sort.js';
+import FilmsContainerComponent from './components/films-container.js';
+import FilmCardComponent from './components/film-card.js';
+import ShowMoreButtonComponent from './components/show-more-button.js';
+import FilmPopupComponent from './components/film-popup.js';
 import {generateNav, generateNavAdditional} from './mock/nav';
 import {generateFilmCards} from './mock/film-card';
 import {render, RenderPosition} from './utils/render.js';
