@@ -1,4 +1,4 @@
-import { trimText } from '../utils/common.js';
+import {trimText} from '../utils/common.js';
 import { createElement } from '../utils/render.js';
 
 const createFilmCardTemplate = (filmCard) => {

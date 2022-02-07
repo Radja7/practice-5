@@ -1,4 +1,4 @@
-import { createElement } from '../utils/render.js';
+import {createElement} from '../utils/render.js';
 
 const createNavMarkup = (nav, isActive) => {
   const {text, name, count} = nav;

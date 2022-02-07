@@ -1,5 +1,5 @@
 import {SORTS} from '../const';
-import { createElement } from '../utils/render.js';
+import {createElement} from '../utils/render.js';
 
 const createSortMarkup = (name, isActive) => {
   return (

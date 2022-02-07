@@ -7,6 +7,7 @@ import {createShowMoreButtonTemplate} from './components/show-more-button.js';
 import {createFilmPopupTemplate} from './components/film-popup.js';
 import {generateNav, generateNavAdditional} from './mock/nav';
 import {generateFilmCards} from './mock/film-card';
+import {render, RenderPosition} from './utils/render.js';
 
 const FILMS_COUNT = 20;
 const SHOWING_FILMS_COUNT_ON_START = 5;
@@ -15,9 +16,9 @@ const SHOWING_FILMS_COUNT_BY_BUTTON = 5;
 const EXTRA_FILMS_COUNT = 2;
 
 
-const renderOLD = (container, template, place = 'beforeend') => {
-  container.insertAdjacentHTML(place, template);
-};
+// const render = (container, template, place = 'beforeend') => {
+//   container.insertAdjacentHTML(place, template);
+// };
 
 const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
