@@ -50,7 +50,7 @@ const renderFilmCard = (cardListElement, card) => {
     if(evt.key === 'Escape' || evt.key === 'Esc') {
       evt.preventDefault();
       removePopup();
-      body.classList.remove('hide-overflow');
+      body.classList.remove('hide-overlow');
       document.removeEventListener('keydown', onEscKeyDown);
     }
   };
@@ -62,6 +62,7 @@ const renderFilmCard = (cardListElement, card) => {
   });
   cardPopupComponent.getElement().querySelector('.film-details__close-btn').addEventListener('click', (evt) => {
     removePopup();
+    body.classList.remove('hide-overlow');
     document.removeEventListener('keydown', onEscKeyDown);
   });
 
