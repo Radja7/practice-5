@@ -41,10 +41,10 @@ const renderFilmCard = (cardListElement, card) => {
   const body = document.body;
 
   const appendPopup = () => {
-    cardListElement.appendChild(cardPopupComponent.getElement());
+    body.appendChild(cardPopupComponent.getElement());
   };
   const removePopup = () => {
-    cardListElement.removeChild(cardPopupComponent.getElement());
+    body.removeChild(cardPopupComponent.getElement());
   };
   const onEscKeyDown = (evt) => {
     if(evt.key === 'Escape' || evt.key === 'Esc') {
@@ -102,7 +102,6 @@ let extraFilmCardsCount = 0;
 for (let i = 0; i < filmsExtraListElements.length; i++) {
   for (let k = 0; k < EXTRA_FILMS_COUNT; k++) {
     const filmsExtraListInnerContainerElement = filmsExtraListElements[i].querySelector('.films-list__container');
-    //render(filmsExtraListInnerContainerElement, createFilmCardTemplate(filmCards[extraFilmCardsCount]));
     renderFilmCard(filmsExtraListInnerContainerElement, filmCards[extraFilmCardsCount]);
     extraFilmCardsCount++;
   }
