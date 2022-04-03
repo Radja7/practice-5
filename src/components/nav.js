@@ -1,4 +1,4 @@
-import {createElement} from '../utils/render.js';
+import AbstractComponent from './abstract-component.js';
 
 const createNavMarkup = (nav, isActive) => {
   const {text, name, count} = nav;
@@ -28,26 +28,15 @@ const createNavTemplate = (nav, navAdditional) => {
     </nav>`
 };
 
-export default class NavComponent {
+export default class NavComponent extends AbstractComponent {
   constructor(nav, navAdditional) {
+    super();
+
     this._nav = nav;
     this._navAdditional = navAdditional;
-    this._element = null;
   }
 
   getTemplate() {
     return createNavTemplate(this._nav, this._navAdditional);
-  }
-
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

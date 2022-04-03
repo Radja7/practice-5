@@ -1,5 +1,5 @@
+import AbstractComponent from './abstract-component.js';
 import { convertDatePopup } from '../utils/task.js';
-import { createElement } from '../utils/render.js';
 
 const createFilmPopupTemplate = (filmCard) => {
   const {ageRating, originalName,director,writers,actors,country,releaseDate,  posterURL, name, rating, duration, genre, description, isWatchlist, isWatched, isFavorite} = filmCard;
@@ -175,25 +175,14 @@ const createFilmPopupTemplate = (filmCard) => {
       </section> `
 };
 
-export default class FilmPopupComponent {
+export default class FilmPopupComponent extends AbstractComponent {
   constructor(filmCard) {
+    super();
+
     this._filmCard = filmCard;
-    this._element = null;
   }
 
   getTemplate() {
     return createFilmPopupTemplate(this._filmCard)
-  }
-
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

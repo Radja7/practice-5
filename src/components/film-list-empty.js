@@ -1,4 +1,4 @@
-import {createElement} from '../utils/render.js';
+import AbstractComponent from './abstract-component.js';
 
 const createFilmsListEmptyTemplate = (message) => {
   return (
@@ -10,25 +10,14 @@ const createFilmsListEmptyTemplate = (message) => {
   );
 };
 
-export default class FilmsListEmptyComponent {
+export default class FilmsListEmptyComponent extends AbstractComponent {
   constructor(message) {
+    super();
+
     this._message = message;
-    this._element = null;
   }
 
   getTemplate() {
     return createFilmsListEmptyTemplate(this._message);
-  }
-
-  getElement() {
-    if(!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
