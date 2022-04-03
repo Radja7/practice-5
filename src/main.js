@@ -12,7 +12,7 @@ import {generateFilmCards} from './mock/film-card.js';
 import {render, RenderPosition} from './utils/render.js';
 
 
-const FILMS_COUNT = 0;
+const FILMS_COUNT = 20;
 const SHOWING_FILMS_COUNT_ON_START = 5;
 const SHOWING_FILMS_COUNT_BY_BUTTON = 5;
 
