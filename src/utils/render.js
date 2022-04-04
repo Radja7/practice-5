@@ -14,6 +14,11 @@ export const render = (container, element, place) => {
   }
 };
 
+export const remove = (component) => {
+  component.getElement().remove();
+  component.removeElement();
+};
+
 
 // Принцип работы прост:
 // 1. создаём пустой div-блок

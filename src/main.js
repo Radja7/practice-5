@@ -9,7 +9,7 @@ import ShowMoreButtonComponent from './components/show-more-button.js';
 import FilmPopupComponent from './components/film-popup.js';
 import {generateNav, generateNavAdditional} from './mock/nav.js';
 import {generateFilmCards} from './mock/film-card.js';
-import {render, RenderPosition} from './utils/render.js';
+import {render, remove, RenderPosition} from './utils/render.js';
 
 
 const FILMS_COUNT = 20;
@@ -95,7 +95,7 @@ if(FILMS_COUNT > 0) {
         .forEach((card) => renderFilmCard(filmsListElement, card));
 
       if(showingFilmsCount >= filmCards.length) {
-        loadMoreButton.remove();
+        remove(loadMoreButton);
       }
     });
   }
