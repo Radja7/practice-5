@@ -60,12 +60,12 @@ if(FILMS_COUNT > 0) {
       }
     };
 
-    cardComponent.getElement().querySelector('.film-card__comments').addEventListener('click', () => {
+    cardComponent.setCommentClickHandler(() => {
       appendPopup();
       body.classList.add('hide-overlow');
       document.addEventListener('keydown', onEscKeyDown);
     });
-    cardPopupComponent.getElement().querySelector('.film-details__close-btn').addEventListener('click', (evt) => {
+    cardPopupComponent.setCloseButtonClickHandler(() => {
       removePopup();
       body.classList.remove('hide-overlow');
       document.removeEventListener('keydown', onEscKeyDown);
@@ -81,12 +81,11 @@ if(FILMS_COUNT > 0) {
 
   if(filmCards.length > SHOWING_FILMS_COUNT_ON_START) {
     let showingFilmsCount = SHOWING_FILMS_COUNT_ON_START;
+    const loadMoreButton = new ShowMoreButtonComponent;
 
-    render(filmsList, new ShowMoreButtonComponent().getElement(), RenderPosition.BEFOREEND);
+    render(filmsList, loadMoreButton.getElement(), RenderPosition.BEFOREEND);
 
-    const loadMoreButton = filmsContainerElement.querySelector('.films-list__show-more');
-
-    loadMoreButton.addEventListener('click', (evt) => {
+    loadMoreButton.setClickHandler((evt) => {
       evt.preventDefault();
 
       const prevFilmsCount = showingFilmsCount;
