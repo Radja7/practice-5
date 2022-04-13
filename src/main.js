@@ -1,7 +1,6 @@
 import ProfileComponent from './components/profile.js';
 import NavComponent from './components/nav.js';
-import SortComponent from './components/sort.js';
-import FilmsContainerComponent from './components/films-container.js';
+import FilmsStatisticsComponent from './components/films-statistics';
 import {generateFilmCards} from './mock/film-card.js';
 import {generateNav, generateNavAdditional} from './mock/nav.js';
 import {render, RenderPosition} from './utils/render.js';
@@ -12,6 +11,7 @@ const FILMS_COUNT = 9;
 const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
 const siteFooterElement = document.querySelector('.footer');
+const footerStatisticsElement = siteFooterElement.querySelector(`.footer__statistics`);
 
 const nav = generateNav();
 const navAdditional = generateNavAdditional();
@@ -22,6 +22,7 @@ const pageController = new PageController(siteMainElement);
 
 render(siteHeaderElement, new ProfileComponent().getElement(), RenderPosition.BEFOREEND);
 render(siteMainElement, new NavComponent(nav, navAdditional).getElement(), RenderPosition.BEFOREEND);
+render(footerStatisticsElement, new FilmsStatisticsComponent(filmCards.length).getElement(), RenderPosition.BEFOREEND);
 
 pageController.init(filmCards);
 
